@@ -2,7 +2,8 @@ require_relative "film.rb"
 require_relative "film_collection.rb"
 
 # Получаем массив из путей к файлам
-film_files = Dir.glob('./film/*.txt')
+directory_path = "./film/*.txt"
+film_files = Dir.glob(directory_path)
 if film_files.empty?
   abort "Файлов с фильмами не найдено"
 end

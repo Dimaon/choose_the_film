@@ -1,5 +1,4 @@
 class FilmCollection
-
   def initialize(all_films)
     @all_films = all_films
   end
@@ -15,5 +14,4 @@ class FilmCollection
     end
     return films_by_director.compact
   end
-
 end
