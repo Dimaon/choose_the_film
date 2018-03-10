@@ -1,16 +1,10 @@
-require_relative "film.rb"
-require_relative "film_collection.rb"
+require_relative "lib/film.rb"
+require_relative "lib/film_collection.rb"
 
 # Получаем массив из путей к файлам
-directory_path = "./film/*.txt"
-film_files = Dir.glob(directory_path)
-if film_files.empty?
-  abort "Файлов с фильмами не найдено"
-end
+directory_path = "./data/*.txt"
 
-all_films = film_files.map{|film_file| Film.new(film_file)}
-
-film_collection = FilmCollection.new(all_films)
+film_collection = FilmCollection.new(directory_path)
 
 # Получаем массив имен режиссеров
 directors = film_collection.directors
@@ -39,4 +33,4 @@ sample_film_by_director = films_by_director.sample
 
 puts "И сегодня вечером рекомендую посмотреть:"
 # Получить отформатированную строку: Режиссер - Фильм (год выхода)
-puts "#{sample_film_by_director.full_info}"
+puts sample_film_by_director

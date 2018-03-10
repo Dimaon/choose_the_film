@@ -1,4 +1,5 @@
 class Film
+  attr_reader :title, :director, :year
   # Получаем один фильм из пути к файлу
   def initialize(film_file_path)
     @film_file_path = film_file_path
@@ -15,19 +16,7 @@ class Film
     return film
   end
 
-  def title
-    @title
-  end
-
-  def director
-    @director
-  end
-
-  def year
-    @year
-  end
-
-  def full_info
+  def to_s
     "#{@director} - #{@title} (#{@year})"
   end
 end
