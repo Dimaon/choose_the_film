@@ -2,9 +2,14 @@ require_relative "lib/film.rb"
 require_relative "lib/film_collection.rb"
 
 # Получаем массив из путей к файлам
-directory_path = "./data/*.txt"
+dir_path = "./data/*.txt"
 
-film_collection = FilmCollection.new(directory_path)
+if Dir.glob(dir_path).empty?
+  puts "Файлов с фильмами не найдено"
+  exit
+end
+
+film_collection = FilmCollection.from_dir(dir_path)
 
 # Получаем массив имен режиссеров
 directors = film_collection.directors
@@ -23,10 +28,10 @@ while your_choice > directors.uniq.size ||
 end
 
 # Получаем имя режиссера из массива на основе пользовательского ввода
-your_director = directors.uniq[your_choice-1]
+your_director = directors[your_choice-1]
 
-# Получаем обьект фильма на основе польз. ввода из всех фильмов по имени режжисера
-films_by_director = film_collection.search_films_by_director(your_director)
+# "Получаем массив обьектов фильмов на основе польз. ввода из всех фильмов по имени режжисера"
+p films_by_director = film_collection.search_films_by_director(your_director)
 
 # Получаем произвольный обьект найденного фильма по имени режжисера
 sample_film_by_director = films_by_director.sample
